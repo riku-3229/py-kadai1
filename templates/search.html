@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>お気に入り検索 | 推し活ダッシュボード</title>
+    <title>攻略情報検索 | GAME WIKI</title>
 
     <link rel="stylesheet" href="/style.css">
 </head>
@@ -20,12 +20,13 @@
         <div class="header-container">
 
             <a href="/" class="site-title">
-                推し活ダッシュボード
+                GAME WIKI
             </a>
 
             <nav class="site-nav" aria-label="メインナビゲーション">
                 <a href="/">トップ</a>
-                <a href="/favorites">お気に入り一覧</a>
+                <a href="/favorites">攻略一覧</a>
+                <a href="/search" aria-current="page">検索</a>
             </nav>
 
         </div>
@@ -43,17 +44,17 @@
             <div class="section-heading">
 
                 <div>
-                    <h1>お気に入り検索</h1>
+                    <h1>攻略情報検索</h1>
 
                     <p>
-                        タイトル、ジャンル、タグを組み合わせて検索できます。
+                        敵、武器、アイテムなどの名前から検索できます。
                     </p>
                 </div>
 
             </div>
 
 
-            <!-- 詳細検索フォーム -->
+            <!-- 検索フォーム -->
             <form
                 class="favorite-form"
                 action="/search"
@@ -63,7 +64,7 @@
                 <div class="form-group">
 
                     <label for="keyword">
-                        タイトル
+                        名前
                     </label>
 
                     <input
@@ -71,67 +72,9 @@
                         id="keyword"
                         name="keyword"
                         value="{{ keyword }}"
-                        placeholder="例：ドラえもん"
+                        placeholder="例：火の巨人"
+                        required
                     >
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label for="match_type">
-                        タイトルの一致方法
-                    </label>
-
-                    <select
-                        id="match_type"
-                        name="match_type"
-                    >
-                        <option value="partial"{{ partial_selected }}>
-                            部分一致
-                        </option>
-
-                        <option value="exact"{{ exact_selected }}>
-                            完全一致
-                        </option>
-                    </select>
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label for="genre">
-                        ジャンル
-                    </label>
-
-                    <select
-                        id="genre"
-                        name="genre"
-                    >
-                        {{ genre_options }}
-                    </select>
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label for="tag_keyword">
-                        タグ
-                    </label>
-
-                    <input
-                        type="text"
-                        id="tag_keyword"
-                        name="tag_keyword"
-                        value="{{ tag_keyword }}"
-                        placeholder="例：経済"
-                    >
-
-                    <p class="form-help">
-                        タグは、登録されている一つのタグと完全一致する場合に検索されます。
-                    </p>
 
                 </div>
 
@@ -155,7 +98,7 @@
             <div class="search-summary">
 
                 <p>
-                    検索条件：{{ search_message }}
+                    {{ search_message }}
                 </p>
 
                 <p class="result-count">
@@ -172,9 +115,11 @@
 
                     <thead>
                         <tr>
-                            <th scope="col">タイトル</th>
-                            <th scope="col">ジャンル</th>
-                            <th scope="col">タグ</th>
+                            <th scope="col">画像</th>
+                            <th scope="col">ゲーム</th>
+                            <th scope="col">名前</th>
+                            <th scope="col">カテゴリ</th>
+                            <th scope="col">攻略メモ</th>
                             <th scope="col">操作</th>
                         </tr>
                     </thead>
@@ -191,7 +136,7 @@
             <div class="page-navigation">
 
                 <a href="/favorites" class="text-link">
-                    お気に入り一覧へ戻る
+                    攻略一覧へ戻る
                 </a>
 
             </div>
@@ -207,7 +152,7 @@
     <footer class="site-footer">
 
         <p>
-            推し活ダッシュボード
+            GAME WIKI
         </p>
 
     </footer>
