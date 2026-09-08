@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>お気に入り追加 | 推し活ダッシュボード</title>
+    <title>攻略情報追加 | GAME WIKI</title>
 
     <link rel="stylesheet" href="/style.css">
 </head>
@@ -20,12 +20,13 @@
         <div class="header-container">
 
             <a href="/" class="site-title">
-                推し活ダッシュボード
+                GAME WIKI
             </a>
 
             <nav class="site-nav" aria-label="メインナビゲーション">
                 <a href="/">トップ</a>
-                <a href="/favorites">お気に入り一覧</a>
+                <a href="/favorites">攻略一覧</a>
+                <a href="/search">検索</a>
             </nav>
 
         </div>
@@ -42,10 +43,10 @@
 
             <div class="section-heading">
                 <div>
-                    <h1>お気に入り追加</h1>
+                    <h1>攻略情報追加</h1>
 
                     <p>
-                        タイトル、ジャンル、必要に応じてタグを入力してください。
+                        ゲーム内で見つけた敵、武器、アイテムなどの情報を登録します。
                     </p>
                 </div>
             </div>
@@ -54,54 +55,66 @@
             <form class="favorite-form" action="/add" method="POST">
 
                 <div class="form-group">
-                    <label for="title">タイトル</label>
+                    <label for="game">ゲーム名</label>
 
                     <input
                         type="text"
-                        id="title"
-                        name="title"
-                        placeholder="例：ドラえもん"
+                        id="game"
+                        name="game"
+                        placeholder="例：ELDEN RING"
                         required
                     >
                 </div>
 
 
                 <div class="form-group">
-                    <label for="genre">ジャンル</label>
+                    <label for="title">名前</label>
 
-                    <select id="genre" name="genre" required>
-                        <option value="">ジャンルを選択してください</option>
-                        <option value="アニメ">アニメ</option>
-                        <option value="漫画">漫画</option>
-                        <option value="ゲーム">ゲーム</option>
-                        <option value="音楽">音楽</option>
-                        <option value="映画・ドラマ">映画・ドラマ</option>
-                        <option value="書籍">書籍</option>
-                        <option value="人物">人物</option>
-                        <option value="その他">その他</option>
-                    </select>
-
-                    <p class="form-help">
-                        実在人物、キャラクター、VTuberなど、
-                        人名として登録する対象は「人物」を選択します。
-                    </p>
+                    <input
+                        type="text"
+                        id="title"
+                        name="title"
+                        placeholder="例：火の巨人"
+                        required
+                    >
                 </div>
 
 
                 <div class="form-group">
-                    <label for="tags">タグ</label>
+                    <label for="genre">カテゴリ</label>
+
+                    <select id="genre" name="genre" required>
+                        <option value="">カテゴリを選択してください</option>
+                        {{ genre_options }}
+                    </select>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="memo">攻略メモ</label>
+
+                    <textarea
+                        id="memo"
+                        name="memo"
+                        placeholder="例：第2形態では正面から攻撃を見た方が回避しやすい。"
+                        rows="6"
+                    ></textarea>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="image">画像パス</label>
 
                     <input
                         type="text"
-                        id="tags"
-                        name="tags"
-                        placeholder="例：登場人物, キャラクター, VTuber"
+                        id="image"
+                        name="image"
+                        placeholder="例：/static/images/fire_giant.jpg"
                     >
 
                     <p class="form-help">
-                        複数のタグを付ける場合は、
-                        半角カンマ「,」で区切って入力してください。
-                        全角カンマ「，」や読点「、」では区切れません。
+                        画像を使う場合は static/images フォルダに画像を置き、
+                        そのパスを入力します。
                     </p>
                 </div>
 
@@ -124,7 +137,7 @@
 
 
     <footer class="site-footer">
-        <p>推し活ダッシュボード</p>
+        <p>GAME WIKI</p>
     </footer>
 
 </body>

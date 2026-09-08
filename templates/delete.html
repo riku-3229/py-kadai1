@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>お気に入り削除 | 推し活ダッシュボード</title>
+    <title>攻略情報削除 | GAME WIKI</title>
 
     <link rel="stylesheet" href="/style.css">
 </head>
@@ -20,12 +20,13 @@
         <div class="header-container">
 
             <a href="/" class="site-title">
-                推し活ダッシュボード
+                GAME WIKI
             </a>
 
             <nav class="site-nav" aria-label="メインナビゲーション">
                 <a href="/">トップ</a>
-                <a href="/favorites">お気に入り一覧</a>
+                <a href="/favorites">攻略一覧</a>
+                <a href="/search">検索</a>
             </nav>
 
         </div>
@@ -38,18 +39,15 @@
     ========================== -->
     <main class="main-container">
 
-        <!-- =========================
-             削除確認
-        ========================== -->
         <section class="form-section">
 
             <div class="section-heading">
 
                 <div>
-                    <h1>お気に入り削除</h1>
+                    <h1>攻略情報削除</h1>
 
                     <p>
-                        次のお気に入りを削除します。内容を確認してください。
+                        次の攻略情報を削除します。内容を確認してください。
                     </p>
                 </div>
 
@@ -59,20 +57,22 @@
             <div class="delete-confirmation">
 
                 <dl>
+
                     <div>
-                        <dt>タイトル</dt>
-                        <dd>{{ favorite_title }}</dd>
+                        <dt>ゲーム名</dt>
+                        <dd>{{ wiki_game }}</dd>
                     </div>
 
                     <div>
-                        <dt>ジャンル</dt>
-                        <dd>{{ favorite_genre }}</dd>
+                        <dt>名前</dt>
+                        <dd>{{ wiki_title }}</dd>
                     </div>
 
                     <div>
-                        <dt>タグ</dt>
-                        <dd>{{ favorite_tags }}</dd>
+                        <dt>カテゴリ</dt>
+                        <dd>{{ wiki_genre }}</dd>
                     </div>
+
                 </dl>
 
                 <p>
@@ -88,11 +88,10 @@
                 method="POST"
             >
 
-                <!-- 削除対象を識別するための非表示ID -->
                 <input
                     type="hidden"
                     name="id"
-                    value="{{ favorite_id }}"
+                    value="{{ wiki_id }}"
                 >
 
                 <div class="form-actions">
@@ -120,7 +119,7 @@
     <footer class="site-footer">
 
         <p>
-            推し活ダッシュボード
+            GAME WIKI
         </p>
 
     </footer>

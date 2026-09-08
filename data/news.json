@@ -1,26 +1,40 @@
 {
-    "updated_at": "2026-07-30 20:00",
+    "updated_at": "2026-09-08 17:30",
     "articles": [
         {
             "id": 1,
-            "title": "人気アーティストが全国ツアーを開催",
-            "category": "音楽",
-            "summary": "全国10都市を巡るライブツアーの開催が発表されました。",
-            "url": "https://example.com/news/1"
+            "title": "Steamで大型セールが開催",
+            "category": "セール",
+            "summary": "アクションRPGやインディーゲームを中心に、多数のタイトルが割引対象となるセールが開催されています。",
+            "url": "https://store.steampowered.com/"
         },
         {
             "id": 2,
-            "title": "話題のアニメ映画が興行収入100億円突破",
-            "category": "映画",
-            "summary": "公開から30日で興行収入100億円を突破しました。",
-            "url": "https://example.com/news/2"
+            "title": "注目の新作アクションゲームが今月発売",
+            "category": "新作",
+            "summary": "高速アクションとビルド構築を特徴とした新作ゲームが発売予定です。PC版も同時リリースされます。",
+            "url": "https://store.steampowered.com/"
         },
         {
             "id": 3,
-            "title": "新作ゲームの発売日が発表",
-            "category": "ゲーム",
-            "summary": "新作ゲームの発売日と対応機種が公開されました。",
-            "url": "https://example.com/news/3"
+            "title": "人気ゲームに大型アップデート",
+            "category": "アップデート",
+            "summary": "新しい武器や敵、追加エリアなどを含む大型アップデートが配信されました。",
+            "url": "https://store.steampowered.com/"
+        },
+        {
+            "id": 4,
+            "title": "インディーゲーム特集セールがスタート",
+            "category": "セール",
+            "summary": "ローグライク、メトロイドヴァニア、アクションゲームなどのインディータイトルが期間限定で割引されています。",
+            "url": "https://store.steampowered.com/"
+        },
+        {
+            "id": 5,
+            "title": "新作ゲームの体験版がSteamで配信開始",
+            "category": "体験版",
+            "summary": "発売前の新作タイトルを試せる無料体験版がSteamで公開されました。",
+            "url": "https://store.steampowered.com/"
         }
     ]
 }
