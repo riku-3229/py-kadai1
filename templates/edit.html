@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>お気に入り編集 | 推し活ダッシュボード</title>
+
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         ページ上部
+    ========================== -->
+    <header class="site-header">
+
+        <div class="header-container">
+
+            <a href="/" class="site-title">
+                推し活ダッシュボード
+            </a>
+
+            <nav class="site-nav" aria-label="メインナビゲーション">
+                <a href="/">トップ</a>
+                <a href="/favorites">お気に入り一覧</a>
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================
+         メインコンテンツ
+    ========================== -->
+    <main class="main-container">
+
+        <!-- =========================
+             お気に入り編集フォーム
+        ========================== -->
+        <section class="form-section">
+
+            <div class="section-heading">
+
+                <div>
+                    <h1>お気に入り編集</h1>
+
+                    <p>
+                        登録済みのタイトル、ジャンル、タグを変更できます。
+                    </p>
+                </div>
+
+            </div>
+
+
+            <form
+                class="favorite-form"
+                action="/edit"
+                method="POST"
+            >
+
+                <!-- 編集対象を識別するための非表示ID -->
+                <input
+                    type="hidden"
+                    name="id"
+                    value="{{ favorite_id }}"
+                >
+
+
+                <!-- タイトル -->
+                <div class="form-group">
+
+                    <label for="title">
+                        タイトル
+                    </label>
+
+                    <input
+                        type="text"
+                        id="title"
+                        name="title"
+                        value="{{ favorite_title }}"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- ジャンル -->
+                <div class="form-group">
+
+                    <label for="genre">
+                        ジャンル
+                    </label>
+
+                    <select
+                        id="genre"
+                        name="genre"
+                        required
+                    >
+                        {{ genre_options }}
+                    </select>
+
+                    <p class="form-help">
+                        実在人物、キャラクター、VTuberなど、
+                        人名として登録する対象は「人物」を選択します。
+                    </p>
+
+                </div>
+
+
+                <!-- タグ -->
+                <div class="form-group">
+
+                    <label for="tags">
+                        タグ
+                    </label>
+
+                    <input
+                        type="text"
+                        id="tags"
+                        name="tags"
+                        value="{{ favorite_tags }}"
+                        placeholder="例：登場人物, キャラクター, VTuber"
+                    >
+
+                    <p class="form-help">
+                        複数のタグを付ける場合は、
+                        半角カンマ「,」で区切って入力してください。
+                        全角カンマ「，」や読点「、」では区切れません。
+                    </p>
+
+                </div>
+
+
+                <!-- 操作 -->
+                <div class="form-actions">
+
+                    <button type="submit" class="btn">
+                        変更を保存
+                    </button>
+
+                    <a href="/favorites" class="btn secondary-btn">
+                        キャンセル
+                    </a>
+
+                </div>
+
+            </form>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         ページ下部
+    ========================== -->
+    <footer class="site-footer">
+
+        <p>
+            推し活ダッシュボード
+        </p>
+
+    </footer>
+
+</body>
+
+</html>

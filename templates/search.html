@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>お気に入り検索 | 推し活ダッシュボード</title>
+
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         ページ上部
+    ========================== -->
+    <header class="site-header">
+
+        <div class="header-container">
+
+            <a href="/" class="site-title">
+                推し活ダッシュボード
+            </a>
+
+            <nav class="site-nav" aria-label="メインナビゲーション">
+                <a href="/">トップ</a>
+                <a href="/favorites">お気に入り一覧</a>
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================
+         メインコンテンツ
+    ========================== -->
+    <main class="main-container">
+
+        <section class="search-section">
+
+            <div class="section-heading">
+
+                <div>
+                    <h1>お気に入り検索</h1>
+
+                    <p>
+                        タイトル、ジャンル、タグを組み合わせて検索できます。
+                    </p>
+                </div>
+
+            </div>
+
+
+            <!-- 詳細検索フォーム -->
+            <form
+                class="favorite-form"
+                action="/search"
+                method="POST"
+            >
+
+                <div class="form-group">
+
+                    <label for="keyword">
+                        タイトル
+                    </label>
+
+                    <input
+                        type="text"
+                        id="keyword"
+                        name="keyword"
+                        value="{{ keyword }}"
+                        placeholder="例：ドラえもん"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="match_type">
+                        タイトルの一致方法
+                    </label>
+
+                    <select
+                        id="match_type"
+                        name="match_type"
+                    >
+                        <option value="partial"{{ partial_selected }}>
+                            部分一致
+                        </option>
+
+                        <option value="exact"{{ exact_selected }}>
+                            完全一致
+                        </option>
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="genre">
+                        ジャンル
+                    </label>
+
+                    <select
+                        id="genre"
+                        name="genre"
+                    >
+                        {{ genre_options }}
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="tag_keyword">
+                        タグ
+                    </label>
+
+                    <input
+                        type="text"
+                        id="tag_keyword"
+                        name="tag_keyword"
+                        value="{{ tag_keyword }}"
+                        placeholder="例：経済"
+                    >
+
+                    <p class="form-help">
+                        タグは、登録されている一つのタグと完全一致する場合に検索されます。
+                    </p>
+
+                </div>
+
+
+                <div class="form-actions">
+
+                    <button type="submit" class="btn">
+                        検索する
+                    </button>
+
+                    <a href="/search" class="btn secondary-btn">
+                        条件を解除
+                    </a>
+
+                </div>
+
+            </form>
+
+
+            <!-- 検索条件・件数 -->
+            <div class="search-summary">
+
+                <p>
+                    検索条件：{{ search_message }}
+                </p>
+
+                <p class="result-count">
+                    検索結果：{{ result_count }}件
+                </p>
+
+            </div>
+
+
+            <!-- 検索結果 -->
+            <div class="table-container">
+
+                <table class="favorites-table">
+
+                    <thead>
+                        <tr>
+                            <th scope="col">タイトル</th>
+                            <th scope="col">ジャンル</th>
+                            <th scope="col">タグ</th>
+                            <th scope="col">操作</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {{ search_results }}
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+            <div class="page-navigation">
+
+                <a href="/favorites" class="text-link">
+                    お気に入り一覧へ戻る
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         ページ下部
+    ========================== -->
+    <footer class="site-footer">
+
+        <p>
+            推し活ダッシュボード
+        </p>
+
+    </footer>
+
+</body>
+
+</html>

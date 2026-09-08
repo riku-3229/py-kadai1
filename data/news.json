@@ -1,0 +1,26 @@
+{
+    "updated_at": "2026-07-30 20:00",
+    "articles": [
+        {
+            "id": 1,
+            "title": "人気アーティストが全国ツアーを開催",
+            "category": "音楽",
+            "summary": "全国10都市を巡るライブツアーの開催が発表されました。",
+            "url": "https://example.com/news/1"
+        },
+        {
+            "id": 2,
+            "title": "話題のアニメ映画が興行収入100億円突破",
+            "category": "映画",
+            "summary": "公開から30日で興行収入100億円を突破しました。",
+            "url": "https://example.com/news/2"
+        },
+        {
+            "id": 3,
+            "title": "新作ゲームの発売日が発表",
+            "category": "ゲーム",
+            "summary": "新作ゲームの発売日と対応機種が公開されました。",
+            "url": "https://example.com/news/3"
+        }
+    ]
+}

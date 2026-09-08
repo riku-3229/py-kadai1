@@ -1,0 +1,1373 @@
+@charset "UTF-8";
+
+/* ==================================================
+   1. DESIGN TOKENS
+================================================== */
+
+:root {
+    --color-bg: #0f1020;
+    --color-bg-soft: #17192c;
+    --color-surface: rgba(255, 255, 255, 0.82);
+    --color-surface-strong: rgba(255, 255, 255, 0.95);
+
+    --color-text: #171525;
+    --color-text-soft: #5f5a74;
+    --color-white: #ffffff;
+
+    --color-cyan: #37e7ff;
+    --color-magenta: #ff4fd8;
+    --color-violet: #9b7cff;
+
+    --color-pastel-cyan: #dffbff;
+    --color-pastel-lavender: #eee9ff;
+    --color-pastel-pink: #fff0f8;
+
+    --color-border: rgba(107, 92, 149, 0.18);
+    --color-border-strong: rgba(117, 96, 171, 0.30);
+
+    --shadow-soft:
+        0 18px 45px rgba(57, 42, 102, 0.10);
+
+    --shadow-card:
+        0 16px 36px rgba(52, 39, 91, 0.10),
+        inset 0 1px 0 rgba(255, 255, 255, 0.72);
+
+    --shadow-neon:
+        0 0 22px rgba(55, 231, 255, 0.16),
+        0 0 32px rgba(255, 79, 216, 0.10);
+
+    --radius-sm: 10px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+
+    --content-width: 1120px;
+}
+
+
+/* ==================================================
+   2. RESET / BASE
+================================================== */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    color: var(--color-text);
+
+    background:
+        radial-gradient(
+            circle at 10% 0%,
+            rgba(55, 231, 255, 0.18),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 90% 14%,
+            rgba(255, 79, 216, 0.13),
+            transparent 31%
+        ),
+        radial-gradient(
+            circle at 78% 90%,
+            rgba(155, 124, 255, 0.12),
+            transparent 28%
+        ),
+        linear-gradient(
+            145deg,
+            #ffffff 0%,
+            #f6fbff 38%,
+            #f7f3ff 70%,
+            #fff7fb 100%
+        );
+
+    background-attachment: fixed;
+
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        "Hiragino Kaku Gothic ProN",
+        "Hiragino Sans",
+        "Yu Gothic",
+        "Meiryo",
+        sans-serif;
+
+    line-height: 1.75;
+}
+
+body::before {
+    content: "";
+
+    position: fixed;
+    z-index: -1;
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(112, 104, 157, 0.10) 0 1px,
+            transparent 1.3px
+        );
+
+    background-size: 14px 14px;
+
+    -webkit-mask-image:
+        linear-gradient(
+            135deg,
+            rgba(0, 0, 0, 0.36),
+            transparent 38%,
+            transparent 62%,
+            rgba(0, 0, 0, 0.24)
+        );
+
+    mask-image:
+        linear-gradient(
+            135deg,
+            rgba(0, 0, 0, 0.36),
+            transparent 38%,
+            transparent 62%,
+            rgba(0, 0, 0, 0.24)
+        );
+
+    pointer-events: none;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+a {
+    color: inherit;
+}
+
+button,
+input,
+select {
+    font: inherit;
+}
+
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+h1,
+h2,
+h3,
+p,
+dl,
+blockquote {
+    margin-top: 0;
+}
+
+h1,
+h2,
+h3 {
+    line-height: 1.25;
+}
+
+::selection {
+    color: #171525;
+    background-color: rgba(55, 231, 255, 0.34);
+}
+
+
+/* ==================================================
+   3. HEADER
+================================================== */
+
+.site-header {
+    position: sticky;
+    z-index: 1000;
+    top: 0;
+
+    padding: 12px 20px 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.72),
+            rgba(255, 255, 255, 0.24)
+        );
+
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+}
+
+.header-container {
+    position: relative;
+
+    width: min(var(--content-width), 100%);
+    margin: 0 auto;
+    padding: 14px 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 28px;
+
+    background:
+        linear-gradient(
+            120deg,
+            rgba(255, 255, 255, 0.92),
+            rgba(239, 249, 255, 0.80) 48%,
+            rgba(244, 238, 255, 0.76)
+        );
+
+    border: 1px solid rgba(255, 255, 255, 0.86);
+    border-radius: 18px;
+
+    box-shadow:
+        0 14px 32px rgba(50, 38, 92, 0.10),
+        inset 0 -1px 0 rgba(55, 231, 255, 0.20);
+
+    overflow: hidden;
+}
+
+.header-container::after {
+    content: "";
+
+    position: absolute;
+    inset: auto 18px 0;
+
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--color-cyan),
+            var(--color-violet),
+            var(--color-magenta),
+            transparent
+        );
+
+    opacity: 0.55;
+}
+
+.site-title {
+    position: relative;
+
+    color: #211d37;
+
+    font-size: clamp(1.05rem, 2.2vw, 1.35rem);
+    font-weight: 800;
+    letter-spacing: 0.02em;
+
+    text-decoration: none;
+
+    text-shadow:
+        -1px 0 rgba(55, 231, 255, 0.40),
+        1px 0 rgba(255, 79, 216, 0.32);
+}
+
+.site-title::before {
+    content: "OSHI / DASHBOARD";
+
+    display: block;
+
+    margin-bottom: 1px;
+
+    color: #8b80a7;
+
+    font-size: 0.58rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+
+    text-shadow: none;
+}
+
+
+/* ==================================================
+   4. NAVIGATION
+================================================== */
+
+.site-nav {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.site-nav a {
+    position: relative;
+
+    padding: 8px 13px;
+
+    color: #403955;
+
+    font-size: 0.94rem;
+    font-weight: 700;
+    text-decoration: none;
+
+    border: 1px solid transparent;
+    border-radius: 999px;
+
+    transition:
+        color 0.2s ease,
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.site-nav a:hover {
+    transform: translateY(-1px);
+
+    color: #211d37;
+    background-color: rgba(255, 255, 255, 0.70);
+    border-color: rgba(155, 124, 255, 0.18);
+
+    box-shadow:
+        0 6px 16px rgba(69, 56, 116, 0.08);
+}
+
+.site-nav a[aria-current="page"] {
+    color: #1b1830;
+
+    background:
+        linear-gradient(
+            110deg,
+            rgba(55, 231, 255, 0.16),
+            rgba(155, 124, 255, 0.13),
+            rgba(255, 79, 216, 0.13)
+        );
+
+    border-color: rgba(155, 124, 255, 0.28);
+
+    box-shadow:
+        inset 0 0 18px rgba(155, 124, 255, 0.07);
+}
+
+
+/* ==================================================
+   5. MAIN LAYOUT
+================================================== */
+
+.main-container {
+    width: min(var(--content-width), 100%);
+    margin: 0 auto;
+    padding: 44px 20px 64px;
+}
+
+section + section {
+    margin-top: 42px;
+}
+
+.section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px;
+
+    margin-bottom: 24px;
+}
+
+.section-heading h1,
+.section-heading h2 {
+    margin-bottom: 8px;
+
+    color: #1e1a33;
+
+    letter-spacing: -0.025em;
+}
+
+.section-heading h1 {
+    font-size: clamp(2rem, 4vw, 3rem);
+}
+
+.section-heading h2 {
+    font-size: clamp(1.65rem, 3.2vw, 2.35rem);
+}
+
+.section-heading p {
+    margin-bottom: 0;
+
+    color: var(--color-text-soft);
+}
+
+.heading-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+
+    flex-shrink: 0;
+}
+
+
+/* ==================================================
+   6. COMMON SURFACES
+================================================== */
+
+.favorites-guide details,
+.dashboard-card,
+.news-section,
+.form-section,
+.search-section,
+.favorites-section {
+    position: relative;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.90),
+            rgba(252, 251, 255, 0.80)
+        );
+
+    border: 1px solid rgba(255, 255, 255, 0.92);
+    border-radius: var(--radius-lg);
+
+    box-shadow: var(--shadow-card);
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.form-section,
+.search-section,
+.favorites-section,
+.news-section {
+    padding: 28px;
+}
+
+
+/* ==================================================
+   7. BUTTONS
+================================================== */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 42px;
+    padding: 10px 18px;
+
+    color: #3f355c;
+
+    background-color: rgba(255, 255, 255, 0.58);
+
+    border: 1px solid rgba(111, 90, 168, 0.28);
+    border-radius: 12px;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.75),
+        0 8px 18px rgba(67, 54, 110, 0.10);
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    font-weight: 800;
+    text-decoration: none;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.btn::after {
+    display: none;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+
+    background-color: rgba(255, 255, 255, 0.76);
+    border-color: rgba(111, 90, 168, 0.42);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.90),
+        0 12px 24px rgba(67, 54, 110, 0.14);
+}
+
+.secondary-btn {
+    color: #625b70;
+
+    background-color: rgba(255, 255, 255, 0.38);
+
+    border-color: rgba(105, 93, 137, 0.18);
+}
+
+.secondary-btn:hover {
+    background-color: rgba(255, 255, 255, 0.62);
+}
+
+
+/* ==================================================
+   8. TOP FAVORITES GUIDE
+================================================== */
+
+.favorites-guide {
+    margin-bottom: 44px;
+}
+
+.favorites-guide details {
+    overflow: hidden;
+}
+
+.favorites-guide summary {
+    position: relative;
+
+    padding: 18px 22px;
+
+    color: #302946;
+
+    font-weight: 800;
+
+    cursor: pointer;
+    list-style: none;
+
+    background:
+        linear-gradient(
+            100deg,
+            rgba(223, 251, 255, 0.86),
+            rgba(238, 233, 255, 0.76),
+            rgba(255, 240, 248, 0.76)
+        );
+}
+
+.favorites-guide summary::-webkit-details-marker {
+    display: none;
+}
+
+.favorites-guide summary::after {
+    content: "+";
+
+    position: absolute;
+    top: 50%;
+    right: 22px;
+
+    transform: translateY(-50%);
+
+    color: #7d6da4;
+
+    font-size: 1.25rem;
+}
+
+.favorites-guide details[open] summary::after {
+    content: "−";
+}
+
+.favorites-guide-content {
+    padding: 22px;
+}
+
+.favorites-guide-content p {
+    margin-bottom: 10px;
+
+    color: var(--color-text-soft);
+}
+
+.favorites-guide-content .btn {
+    margin-top: 8px;
+}
+
+
+/* ==================================================
+   9. DASHBOARD
+================================================== */
+
+.dashboard-section {
+    position: relative;
+}
+
+.dashboard-section::before {
+    content: "TODAY";
+
+    position: absolute;
+    z-index: -1;
+
+    top: 22px;
+    right: 0;
+
+    color: rgba(117, 94, 171, 0.08);
+
+    font-size: clamp(5rem, 14vw, 9rem);
+    font-weight: 900;
+    line-height: 0.8;
+
+    letter-spacing: -0.06em;
+
+    pointer-events: none;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+}
+
+.dashboard-card {
+    min-height: 260px;
+    padding: 26px;
+
+    overflow: hidden;
+}
+
+.dashboard-card::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(118, 105, 166, 0.10) 0 1px,
+            transparent 1.25px
+        );
+
+    background-size: 11px 11px;
+
+    opacity: 0.34;
+
+    pointer-events: none;
+}
+
+.dashboard-card > * {
+    position: relative;
+    z-index: 1;
+}
+
+.dashboard-card h3 {
+    margin-bottom: 18px;
+
+    color: #241f39;
+
+    font-size: 1.28rem;
+}
+
+.weather-card {
+    border-left: 3px solid rgba(55, 231, 255, 0.60);
+
+    background:
+        radial-gradient(
+            circle at 90% 8%,
+            rgba(55, 231, 255, 0.15),
+            transparent 30%
+        ),
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.94),
+            rgba(232, 252, 255, 0.76)
+        );
+}
+
+.quote-card {
+    border-left: 3px solid rgba(255, 79, 216, 0.42);
+
+    background:
+        radial-gradient(
+            circle at 88% 12%,
+            rgba(255, 79, 216, 0.12),
+            transparent 30%
+        ),
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.94),
+            rgba(248, 240, 255, 0.78)
+        );
+}
+
+.weather-location,
+.weather-name,
+.quote-author,
+.quote-category {
+    margin-bottom: 8px;
+}
+
+.weather-location {
+    color: #5f5872;
+
+    font-weight: 700;
+}
+
+.weather-image {
+    margin: 12px 0 6px;
+
+    filter:
+        drop-shadow(0 8px 12px rgba(63, 76, 115, 0.10));
+}
+
+.weather-name {
+    color: #28233c;
+
+    font-size: 1.25rem;
+    font-weight: 800;
+}
+
+.temperature-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+
+    margin-bottom: 0;
+}
+
+.temperature-list div {
+    padding: 14px 16px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.86),
+            rgba(245, 248, 255, 0.72)
+        );
+
+    border: 1px solid rgba(91, 77, 135, 0.10);
+    border-radius: 12px;
+}
+
+.temperature-list dt {
+    color: #736a86;
+
+    font-size: 0.78rem;
+    font-weight: 700;
+}
+
+.temperature-list dd {
+    margin: 4px 0 0;
+
+    color: #241f39;
+
+    font-size: 1.35rem;
+    font-weight: 900;
+}
+
+.quote-card blockquote {
+    position: relative;
+
+    margin: 0 0 16px;
+    padding: 20px 22px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.74),
+            rgba(249, 242, 255, 0.70)
+        );
+
+    border: 1px solid rgba(155, 124, 255, 0.16);
+    border-radius: 14px;
+}
+
+.quote-card blockquote::before {
+    content: "“";
+
+    position: absolute;
+    top: -14px;
+    left: 10px;
+
+    color: rgba(155, 124, 255, 0.20);
+
+    font-family: Georgia, serif;
+    font-size: 5rem;
+    line-height: 1;
+}
+
+.quote-card blockquote p {
+    position: relative;
+    z-index: 1;
+
+    margin-bottom: 0;
+
+    color: #312a45;
+
+    font-weight: 700;
+}
+
+
+/* ==================================================
+   10. NEWS
+================================================== */
+
+.news-section {
+    overflow: hidden;
+}
+
+.news-section::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            115deg,
+            transparent 0 72%,
+            rgba(55, 231, 255, 0.07) 73% 74%,
+            transparent 75% 82%,
+            rgba(255, 79, 216, 0.06) 83% 84%,
+            transparent 85%
+        );
+
+    pointer-events: none;
+}
+
+.news-section > * {
+    position: relative;
+    z-index: 1;
+}
+
+.news-updated-at {
+    white-space: nowrap;
+
+    color: #7f7690;
+
+    font-size: 0.86rem;
+}
+
+.news-list {
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+}
+
+.news-list li {
+    padding: 18px 4px;
+
+    border-top: 1px solid rgba(101, 87, 143, 0.12);
+}
+
+.news-list li:first-child {
+    border-top: none;
+}
+
+.news-list p {
+    margin-bottom: 5px;
+}
+
+.news-list strong {
+    color: #29223e;
+}
+
+.news-list a {
+    color: #624ba2;
+
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+}
+
+
+/* ==================================================
+   11. FORMS
+================================================== */
+
+.favorite-form,
+.filter-form {
+    display: grid;
+    gap: 20px;
+}
+
+.form-group {
+    display: grid;
+    gap: 8px;
+}
+
+.form-group label {
+    color: #342d49;
+
+    font-size: 0.93rem;
+    font-weight: 800;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    min-height: 46px;
+    padding: 10px 13px;
+
+    color: #211d33;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.96),
+            rgba(249, 248, 254, 0.90)
+        );
+
+    border: 1px solid rgba(99, 83, 145, 0.20);
+    border-radius: 11px;
+
+    box-shadow:
+        inset 0 1px 2px rgba(73, 58, 112, 0.05);
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background-color 0.2s ease;
+}
+
+.form-group input::placeholder {
+    color: #aaa4b7;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+
+    border-color: rgba(116, 89, 189, 0.48);
+
+    box-shadow:
+        0 0 0 4px rgba(155, 124, 255, 0.12),
+        0 0 18px rgba(55, 231, 255, 0.08);
+
+    background-color: #ffffff;
+}
+
+.form-help {
+    margin-bottom: 0;
+
+    color: #81798f;
+
+    font-size: 0.82rem;
+}
+
+.form-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+
+/* ==================================================
+   12. FILTER / SEARCH
+================================================== */
+
+.filter-form {
+    grid-template-columns: repeat(2, minmax(180px, 1fr)) auto;
+    align-items: end;
+
+    margin-bottom: 22px;
+    padding: 20px;
+
+    background:
+        linear-gradient(
+            120deg,
+            rgba(231, 251, 255, 0.64),
+            rgba(242, 236, 255, 0.58),
+            rgba(255, 240, 248, 0.54)
+        );
+
+    border: 1px solid rgba(130, 109, 183, 0.14);
+    border-radius: 16px;
+}
+
+.filter-form .form-actions {
+    align-items: flex-end;
+}
+
+.search-summary {
+    margin: 24px 0;
+    padding: 16px 18px;
+
+    color: #4e465f;
+
+    background:
+        linear-gradient(
+            110deg,
+            rgba(223, 251, 255, 0.62),
+            rgba(241, 237, 255, 0.62)
+        );
+
+    border: 1px solid rgba(117, 96, 171, 0.14);
+    border-radius: 14px;
+}
+
+.search-summary p {
+    margin-bottom: 4px;
+}
+
+.result-count {
+    color: #625775;
+
+    font-size: 0.88rem;
+    font-weight: 800;
+}
+
+
+/* ==================================================
+   13. TABLE
+================================================== */
+
+.table-container {
+    width: 100%;
+
+    overflow-x: auto;
+
+    border: 1px solid rgba(91, 77, 135, 0.12);
+    border-radius: 16px;
+
+    box-shadow:
+        0 12px 26px rgba(60, 45, 100, 0.06);
+}
+
+.favorites-table {
+    width: 100%;
+    min-width: 720px;
+
+    border-collapse: collapse;
+
+    background-color: rgba(255, 255, 255, 0.72);
+}
+
+.favorites-table th,
+.favorites-table td {
+    padding: 15px 16px;
+
+    text-align: left;
+    vertical-align: top;
+
+    border-bottom: 1px solid rgba(100, 86, 141, 0.11);
+}
+
+.favorites-table th {
+    color: #5c5568;
+    background-color: #f6f5f8;
+
+    font-size: 0.84rem;
+    font-weight: 700;
+    letter-spacing: 0;
+
+    border-bottom: 1px solid #dedbe4;
+}
+
+.favorites-table tbody tr {
+    transition:
+        background-color 0.18s ease,
+        transform 0.18s ease;
+}
+
+.favorites-table tbody tr:hover {
+    background-color: rgba(244, 239, 255, 0.56);
+}
+
+.favorites-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.favorites-table td:nth-child(2) {
+    color: #6a5d7d;
+
+    font-weight: 700;
+}
+
+.favorites-table td:nth-child(3) {
+    color: #746c82;
+
+    font-size: 0.92rem;
+}
+
+.favorites-table a {
+    color: #6b4daa;
+
+    font-weight: 800;
+
+    text-underline-offset: 3px;
+}
+
+.favorites-table a:hover {
+    color: #3d2b69;
+}
+
+
+/* ==================================================
+   14. DELETE CONFIRMATION
+================================================== */
+
+.delete-confirmation {
+    margin-bottom: 24px;
+    padding: 22px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 246, 249, 0.94),
+            rgba(255, 239, 247, 0.82)
+        );
+
+    border: 1px solid rgba(224, 104, 146, 0.24);
+    border-radius: 16px;
+
+    box-shadow:
+        inset 3px 0 0 rgba(255, 79, 216, 0.34);
+}
+
+.delete-confirmation dl {
+    margin-bottom: 18px;
+}
+
+.delete-confirmation dl div {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 16px;
+
+    padding: 11px 0;
+
+    border-bottom: 1px solid rgba(174, 87, 127, 0.12);
+}
+
+.delete-confirmation dl div:last-child {
+    border-bottom: none;
+}
+
+.delete-confirmation dt {
+    color: #8a526c;
+
+    font-weight: 800;
+}
+
+.delete-confirmation dd {
+    margin: 0;
+
+    color: #35263b;
+}
+
+
+/* ==================================================
+   15. PAGE LINKS
+================================================== */
+
+.page-navigation {
+    margin-top: 24px;
+}
+
+.text-link {
+    color: #644aa4;
+
+    font-weight: 800;
+
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+}
+
+
+/* ==================================================
+   16. FOOTER
+================================================== */
+
+.site-footer {
+    position: relative;
+
+    margin-top: 28px;
+    padding: 34px 20px;
+
+    overflow: hidden;
+
+    color: rgba(255, 255, 255, 0.82);
+
+    background:
+        radial-gradient(
+            circle at 14% 26%,
+            rgba(55, 231, 255, 0.12),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 86% 64%,
+            rgba(255, 79, 216, 0.12),
+            transparent 30%
+        ),
+        linear-gradient(
+            145deg,
+            #17122a,
+            #0c0917 72%,
+            #06040d
+        );
+
+    border-top: 1px solid rgba(155, 124, 255, 0.18);
+
+    text-align: center;
+}
+
+.site-footer::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background:
+        repeating-linear-gradient(
+            0deg,
+            transparent 0,
+            transparent 6px,
+            rgba(255, 255, 255, 0.018) 7px
+        );
+
+    pointer-events: none;
+}
+
+.site-footer p {
+    position: relative;
+    z-index: 1;
+
+    margin: 0;
+
+    font-size: 0.86rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+}
+
+
+/* ==================================================
+   17. ACCESSIBILITY / FOCUS
+================================================== */
+
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible {
+    outline: 3px solid rgba(55, 231, 255, 0.65);
+    outline-offset: 3px;
+}
+
+
+/* ==================================================
+   18. RESPONSIVE
+================================================== */
+
+@media (max-width: 768px) {
+
+    .site-header {
+        padding-inline: 12px;
+    }
+
+    .header-container {
+        padding: 12px 14px;
+        gap: 16px;
+    }
+
+    .site-title::before {
+        font-size: 0.50rem;
+    }
+
+    .site-nav {
+        gap: 6px;
+    }
+
+    .site-nav a {
+        padding: 7px 10px;
+
+        font-size: 0.86rem;
+    }
+
+    .main-container {
+        padding: 32px 16px 52px;
+    }
+
+    .section-heading {
+        flex-direction: column;
+    }
+
+    .heading-actions {
+        width: 100%;
+    }
+
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .filter-form {
+        grid-template-columns: 1fr;
+    }
+
+    .temperature-list {
+        grid-template-columns: 1fr;
+    }
+
+    .form-section,
+    .search-section,
+    .favorites-section,
+    .news-section {
+        padding: 22px;
+    }
+
+    .delete-confirmation dl div {
+        grid-template-columns: 1fr;
+        gap: 4px;
+    }
+
+    .favorites-table {
+        min-width: 640px;
+    }
+
+}
+
+
+@media (max-width: 520px) {
+
+    .header-container {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .site-nav {
+        width: 100%;
+    }
+
+    .site-nav a {
+        flex: 1;
+
+        text-align: center;
+    }
+
+    .main-container {
+        padding-inline: 14px;
+    }
+
+    .form-section,
+    .search-section,
+    .favorites-section,
+    .news-section {
+        padding: 18px;
+    }
+
+    .heading-actions,
+    .form-actions {
+        width: 100%;
+    }
+
+    .heading-actions .btn,
+    .form-actions .btn {
+        flex: 1;
+    }
+
+    .dashboard-card {
+        padding: 22px;
+    }
+
+    .favorites-guide summary,
+    .favorites-guide-content {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+    .site-footer {
+        margin-top: 16px;
+    }
+
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+    }
+
+}

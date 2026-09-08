@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>お気に入り削除 | 推し活ダッシュボード</title>
+
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         ページ上部
+    ========================== -->
+    <header class="site-header">
+
+        <div class="header-container">
+
+            <a href="/" class="site-title">
+                推し活ダッシュボード
+            </a>
+
+            <nav class="site-nav" aria-label="メインナビゲーション">
+                <a href="/">トップ</a>
+                <a href="/favorites">お気に入り一覧</a>
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================
+         メインコンテンツ
+    ========================== -->
+    <main class="main-container">
+
+        <!-- =========================
+             削除確認
+        ========================== -->
+        <section class="form-section">
+
+            <div class="section-heading">
+
+                <div>
+                    <h1>お気に入り削除</h1>
+
+                    <p>
+                        次のお気に入りを削除します。内容を確認してください。
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="delete-confirmation">
+
+                <dl>
+                    <div>
+                        <dt>タイトル</dt>
+                        <dd>{{ favorite_title }}</dd>
+                    </div>
+
+                    <div>
+                        <dt>ジャンル</dt>
+                        <dd>{{ favorite_genre }}</dd>
+                    </div>
+
+                    <div>
+                        <dt>タグ</dt>
+                        <dd>{{ favorite_tags }}</dd>
+                    </div>
+                </dl>
+
+                <p>
+                    この操作は取り消せません。
+                </p>
+
+            </div>
+
+
+            <form
+                class="favorite-form"
+                action="/delete"
+                method="POST"
+            >
+
+                <!-- 削除対象を識別するための非表示ID -->
+                <input
+                    type="hidden"
+                    name="id"
+                    value="{{ favorite_id }}"
+                >
+
+                <div class="form-actions">
+
+                    <button type="submit" class="btn">
+                        削除する
+                    </button>
+
+                    <a href="/favorites" class="btn secondary-btn">
+                        キャンセル
+                    </a>
+
+                </div>
+
+            </form>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         ページ下部
+    ========================== -->
+    <footer class="site-footer">
+
+        <p>
+            推し活ダッシュボード
+        </p>
+
+    </footer>
+
+</body>
+
+</html>

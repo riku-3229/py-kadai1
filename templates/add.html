@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>お気に入り追加 | 推し活ダッシュボード</title>
+
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         ページ上部
+    ========================== -->
+    <header class="site-header">
+
+        <div class="header-container">
+
+            <a href="/" class="site-title">
+                推し活ダッシュボード
+            </a>
+
+            <nav class="site-nav" aria-label="メインナビゲーション">
+                <a href="/">トップ</a>
+                <a href="/favorites">お気に入り一覧</a>
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================
+         メインコンテンツ
+    ========================== -->
+    <main class="main-container">
+
+        <section class="form-section">
+
+            <div class="section-heading">
+                <div>
+                    <h1>お気に入り追加</h1>
+
+                    <p>
+                        タイトル、ジャンル、必要に応じてタグを入力してください。
+                    </p>
+                </div>
+            </div>
+
+
+            <form class="favorite-form" action="/add" method="POST">
+
+                <div class="form-group">
+                    <label for="title">タイトル</label>
+
+                    <input
+                        type="text"
+                        id="title"
+                        name="title"
+                        placeholder="例：ドラえもん"
+                        required
+                    >
+                </div>
+
+
+                <div class="form-group">
+                    <label for="genre">ジャンル</label>
+
+                    <select id="genre" name="genre" required>
+                        <option value="">ジャンルを選択してください</option>
+                        <option value="アニメ">アニメ</option>
+                        <option value="漫画">漫画</option>
+                        <option value="ゲーム">ゲーム</option>
+                        <option value="音楽">音楽</option>
+                        <option value="映画・ドラマ">映画・ドラマ</option>
+                        <option value="書籍">書籍</option>
+                        <option value="人物">人物</option>
+                        <option value="その他">その他</option>
+                    </select>
+
+                    <p class="form-help">
+                        実在人物、キャラクター、VTuberなど、
+                        人名として登録する対象は「人物」を選択します。
+                    </p>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="tags">タグ</label>
+
+                    <input
+                        type="text"
+                        id="tags"
+                        name="tags"
+                        placeholder="例：登場人物, キャラクター, VTuber"
+                    >
+
+                    <p class="form-help">
+                        複数のタグを付ける場合は、
+                        半角カンマ「,」で区切って入力してください。
+                        全角カンマ「，」や読点「、」では区切れません。
+                    </p>
+                </div>
+
+
+                <div class="form-actions">
+                    <button type="submit" class="btn">
+                        追加する
+                    </button>
+
+                    <a href="/favorites" class="btn secondary-btn">
+                        キャンセル
+                    </a>
+                </div>
+
+            </form>
+
+        </section>
+
+    </main>
+
+
+    <footer class="site-footer">
+        <p>推し活ダッシュボード</p>
+    </footer>
+
+</body>
+
+</html>

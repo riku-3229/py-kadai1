@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>推し活ダッシュボード</title>
+
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         ページ上部
+    ========================== -->
+    <header class="site-header">
+
+        <div class="header-container">
+
+            <a href="/" class="site-title">
+                推し活ダッシュボード
+            </a>
+
+            <nav class="site-nav" aria-label="メインナビゲーション">
+                <a href="/" aria-current="page">トップ</a>
+                <a href="/favorites">お気に入り一覧</a>
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================
+         メインコンテンツ
+    ========================== -->
+    <main class="main-container">
+
+        <!-- お気に入り機能の説明と入口 -->
+        <section class="favorites-guide">
+
+            <details open>
+
+                <summary>
+                    お気に入り機能について
+                </summary>
+
+                <div class="favorites-guide-content">
+
+                    <p>
+                        好きな作品や人物などを、
+                        タイトル、ジャンル、タグに分けて登録できます。
+                    </p>
+
+                    <p>
+                        登録したお気に入りは、
+                        一覧表示・検索・編集・削除ができます。
+                    </p>
+
+                    <a href="/favorites" class="btn">
+                        お気に入り一覧を見る
+                    </a>
+
+                </div>
+
+            </details>
+
+        </section>
+
+
+        <!-- =========================
+             今日のダッシュボード
+        ========================== -->
+        <section class="dashboard-section">
+
+            <div class="section-heading">
+
+                <h2>
+                    今日のダッシュボード
+                </h2>
+
+                <p>
+                    今日の天気、ニュース、名言を確認できます。
+                </p>
+
+            </div>
+
+
+            <div class="dashboard-grid">
+
+                <section class="dashboard-card weather-card">
+
+                    <h3>🌤 今日の天気</h3>
+
+                    <p class="weather-location">
+                        {{ weather_location }}
+                    </p>
+
+                    <img
+                        class="weather-image"
+                        src="{{ weather_image }}"
+                        alt="{{ weather }}"
+                        width="80"
+                        height="60"
+                    >
+
+                    <p class="weather-name">
+                        {{ weather }}
+                    </p>
+
+                    <dl class="temperature-list">
+
+                        <div>
+                            <dt>最高気温</dt>
+                            <dd>{{ max_temperature }}℃</dd>
+                        </div>
+
+                        <div>
+                            <dt>最低気温</dt>
+                            <dd>{{ min_temperature }}℃</dd>
+                        </div>
+
+                    </dl>
+
+                </section>
+
+
+                <section class="dashboard-card quote-card">
+
+                    <h3>💬 今日の名言</h3>
+
+                    <blockquote>
+                        <p>「{{ quote_text }}」</p>
+                    </blockquote>
+
+                    <p class="quote-author">
+                        ― {{ quote_author }}
+                    </p>
+
+                    <p class="quote-category">
+                        分類：{{ quote_category }}
+                    </p>
+
+                </section>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             今日のニュース
+        ========================== -->
+        <section class="news-section">
+
+            <div class="section-heading">
+
+                <div>
+                    <h2>📰 今日のニュース</h2>
+
+                    <p>
+                        登録されているニュースを表示しています。
+                    </p>
+                </div>
+
+                <p class="news-updated-at">
+                    更新日時：{{ news_updated_at }}
+                </p>
+
+            </div>
+
+            <ul class="news-list">
+                {{ news_items }}
+            </ul>
+
+        </section>
+
+    </main>
+
+
+    <footer class="site-footer">
+        <p>推し活ダッシュボード</p>
+    </footer>
+
+</body>
+
+</html>
