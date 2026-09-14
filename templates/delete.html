@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>攻略情報削除 | GAME WIKI</title>
+    <title>武器情報削除 | GAME WIKI</title>
 
     <link rel="stylesheet" href="/style.css">
 </head>
@@ -25,7 +25,7 @@
 
             <nav class="site-nav" aria-label="メインナビゲーション">
                 <a href="/">トップ</a>
-                <a href="/favorites">攻略一覧</a>
+                <a href="/favorites">武器一覧</a>
                 <a href="/search">検索</a>
             </nav>
 
@@ -44,10 +44,10 @@
             <div class="section-heading">
 
                 <div>
-                    <h1>攻略情報削除</h1>
+                    <h1>武器情報削除</h1>
 
                     <p>
-                        次の攻略情報を削除します。内容を確認してください。
+                        次の武器情報を削除します。内容を確認してください。
                     </p>
                 </div>
 
@@ -59,18 +59,18 @@
                 <dl>
 
                     <div>
-                        <dt>ゲーム名</dt>
-                        <dd>{{ wiki_game }}</dd>
-                    </div>
-
-                    <div>
-                        <dt>名前</dt>
+                        <dt>武器名</dt>
                         <dd>{{ wiki_title }}</dd>
                     </div>
 
                     <div>
-                        <dt>カテゴリ</dt>
-                        <dd>{{ wiki_genre }}</dd>
+                        <dt>武器種</dt>
+                        <dd>{{ wiki_weapon_type }}</dd>
+                    </div>
+
+                    <div>
+                        <dt>攻撃属性</dt>
+                        <dd>{{ wiki_attack_type }}</dd>
                     </div>
 
                 </dl>

@@ -1,10 +1,10 @@
 [
     {
         "id": 1,
-        "title": "火の巨人",
-        "genre": "敵",
-        "game": "ELDEN RING",
-        "memo": "",
-        "image": ""
+        "title": "クレイモア",
+        "weapon_type": "大剣",
+        "attack_type": "標準/刺突",
+        "location": "モーンの城",
+        "memo": "強攻撃が刺突。筋力・技量補正。戦灰の付け替えが可能。"
     }
 ]

@@ -12,13 +12,6 @@ import os
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-WIKI_CATEGORIES = [
-    "敵",
-    "武器",
-    "アイテム",
-    "NPC",
-    "その他"
-]
 
 
 class MyHandler(BaseHTTPRequestHandler):
@@ -148,40 +141,17 @@ class MyHandler(BaseHTTPRequestHandler):
     # HTML生成
     # ==================================================
 
-    def create_category_options(self, selected_category="", include_all=False):
-        options = ""
-
-        if include_all:
-            selected = " selected" if selected_category == "" else ""
-            options += f'<option value=""{selected}>すべて</option>'
-
-        for category in WIKI_CATEGORIES:
-            selected = " selected" if category == selected_category else ""
-            options += (
-                f'<option value="{category}"{selected}>'
-                f'{category}</option>'
-            )
-
-        return options
 
     def create_wiki_rows(self, wiki_data, include_actions=False):
         rows = ""
 
         for item in wiki_data:
             wiki_id = item.get("id", "")
-            title = item.get("title", "タイトルなし")
-            category = item.get("genre", "未分類")
-            game = item.get("game", "ゲーム名なし")
+            title = item.get("title", "武器名なし")
+            weapon_type = item.get("weapon_type", "")
+            attack_type = item.get("attack_type", "")
+            location = item.get("location", "")
             memo = item.get("memo", "")
-            image = item.get("image", "")
-
-            image_html = ""
-
-            if image:
-                image_html = (
-                    f'<img src="{image}" '
-                    f'alt="{title}" class="wiki-thumb">'
-                )
 
             actions_html = ""
 
@@ -192,10 +162,10 @@ class MyHandler(BaseHTTPRequestHandler):
 
             rows += f"""
             <tr>
-                <td>{image_html}</td>
-                <td>{game}</td>
                 <td>{title}</td>
-                <td>{category}</td>
+                <td>{weapon_type}</td>
+                <td>{attack_type}</td>
+                <td>{location}</td>
                 <td>{memo}</td>
                 {actions_html}
             </tr>
@@ -203,10 +173,11 @@ class MyHandler(BaseHTTPRequestHandler):
 
         if rows == "":
             column_count = 6 if include_actions else 5
+
             rows = f"""
             <tr>
                 <td colspan="{column_count}">
-                    攻略情報は登録されていません
+                    武器情報は登録されていません
                 </td>
             </tr>
             """
@@ -267,10 +238,7 @@ class MyHandler(BaseHTTPRequestHandler):
         )
 
     def show_add(self):
-        self.render_template(
-            "add.html",
-            genre_options=self.create_category_options()
-        )
+        self.render_template("add.html")
 
     def show_search(self):
         self.render_template(
@@ -340,22 +308,20 @@ class MyHandler(BaseHTTPRequestHandler):
         form_data = self.read_form_data()
 
         title = form_data.get("title", [""])[0].strip()
-        genre = form_data.get("genre", [""])[0].strip()
-        game = form_data.get("game", [""])[0].strip()
+        weapon_type = form_data.get("weapon_type", [""])[0].strip()
+        attack_type = form_data.get("attack_type", [""])[0].strip()
+        location = form_data.get("location", [""])[0].strip()
         memo = form_data.get("memo", [""])[0].strip()
-        image = form_data.get("image", [""])[0].strip()
 
-        if title == "" or genre == "" or game == "":
+        if (
+            title == ""
+            or weapon_type == ""
+            or attack_type == ""
+            or location == ""
+        ):
             self.send_text_response(
                 400,
-                "ゲーム名・タイトル・ジャンルを入力してください"
-            )
-            return
-
-        if genre not in WIKI_CATEGORIES:
-            self.send_text_response(
-                400,
-                "選択されたジャンルが正しくありません"
+                "武器名・武器種・攻撃属性・入手場所を入力してください"
             )
             return
 
@@ -365,10 +331,10 @@ class MyHandler(BaseHTTPRequestHandler):
         wiki_data.append({
             "id": len(wiki_data) + 1,
             "title": title,
-            "genre": genre,
-            "game": game,
-            "memo": memo,
-            "image": image
+            "weapon_type": weapon_type,
+            "attack_type": attack_type,
+            "location": location,
+            "memo": memo
         })
 
         if self.save_wiki_data(wiki_data):
@@ -377,7 +343,7 @@ class MyHandler(BaseHTTPRequestHandler):
 
         self.send_text_response(
             500,
-            "攻略情報の保存に失敗しました"
+            "武器情報の保存に失敗しました"
         )
 
     def search_wiki(self):
