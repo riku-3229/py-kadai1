@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>攻略情報検索 | GAME WIKI</title>
+    <title>武器検索 | GAME WIKI</title>
 
     <link rel="stylesheet" href="/style.css">
 </head>
@@ -25,7 +25,7 @@
 
             <nav class="site-nav" aria-label="メインナビゲーション">
                 <a href="/">トップ</a>
-                <a href="/favorites">攻略一覧</a>
+                <a href="/favorites">武器一覧</a>
                 <a href="/search" aria-current="page">検索</a>
             </nav>
 
@@ -44,10 +44,10 @@
             <div class="section-heading">
 
                 <div>
-                    <h1>攻略情報検索</h1>
+                    <h1>武器検索</h1>
 
                     <p>
-                        敵、武器、アイテムなどの名前から検索できます。
+                        武器名から登録した武器情報を検索できます。
                     </p>
                 </div>
 
@@ -64,7 +64,7 @@
                 <div class="form-group">
 
                     <label for="keyword">
-                        名前
+                        武器名
                     </label>
 
                     <input
@@ -72,7 +72,7 @@
                         id="keyword"
                         name="keyword"
                         value="{{ keyword }}"
-                        placeholder="例：火の巨人"
+                        placeholder="例：クレイモア"
                         required
                     >
 
@@ -115,11 +115,11 @@
 
                     <thead>
                         <tr>
-                            <th scope="col">画像</th>
-                            <th scope="col">ゲーム</th>
-                            <th scope="col">名前</th>
-                            <th scope="col">カテゴリ</th>
-                            <th scope="col">攻略メモ</th>
+                            <th scope="col">武器名</th>
+                            <th scope="col">武器種</th>
+                            <th scope="col">攻撃属性</th>
+                            <th scope="col">入手場所</th>
+                            <th scope="col">特徴メモ</th>
                             <th scope="col">操作</th>
                         </tr>
                     </thead>
@@ -136,7 +136,7 @@
             <div class="page-navigation">
 
                 <a href="/favorites" class="text-link">
-                    攻略一覧へ戻る
+                    武器一覧へ戻る
                 </a>
 
             </div>

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>攻略情報追加 | GAME WIKI</title>
+    <title>武器情報追加 | GAME WIKI</title>
 
     <link rel="stylesheet" href="/style.css">
 </head>
@@ -25,7 +25,7 @@
 
             <nav class="site-nav" aria-label="メインナビゲーション">
                 <a href="/">トップ</a>
-                <a href="/favorites">攻略一覧</a>
+                <a href="/favorites">武器一覧</a>
                 <a href="/search">検索</a>
             </nav>
 
@@ -43,10 +43,10 @@
 
             <div class="section-heading">
                 <div>
-                    <h1>攻略情報追加</h1>
+                    <h1>武器情報追加</h1>
 
                     <p>
-                        ゲーム内で見つけた敵、武器、アイテムなどの情報を登録します。
+                        武器名、武器種、攻撃属性、入手場所、特徴を登録します。
                     </p>
                 </div>
             </div>
@@ -55,67 +55,66 @@
             <form class="favorite-form" action="/add" method="POST">
 
                 <div class="form-group">
-                    <label for="game">ゲーム名</label>
-
-                    <input
-                        type="text"
-                        id="game"
-                        name="game"
-                        placeholder="例：ELDEN RING"
-                        required
-                    >
-                </div>
-
-
-                <div class="form-group">
-                    <label for="title">名前</label>
+                    <label for="title">武器名</label>
 
                     <input
                         type="text"
                         id="title"
                         name="title"
-                        placeholder="例：火の巨人"
+                        placeholder="例：クレイモア"
                         required
                     >
                 </div>
 
 
                 <div class="form-group">
-                    <label for="genre">カテゴリ</label>
+                    <label for="weapon_type">武器種</label>
 
-                    <select id="genre" name="genre" required>
-                        <option value="">カテゴリを選択してください</option>
-                        {{ genre_options }}
-                    </select>
+                    <input
+                        type="text"
+                        id="weapon_type"
+                        name="weapon_type"
+                        placeholder="例：大剣"
+                        required
+                    >
                 </div>
 
 
                 <div class="form-group">
-                    <label for="memo">攻略メモ</label>
+                    <label for="attack_type">攻撃属性</label>
+
+                    <input
+                        type="text"
+                        id="attack_type"
+                        name="attack_type"
+                        placeholder="例：標準 / 刺突"
+                        required
+                    >
+                </div>
+
+
+                <div class="form-group">
+                    <label for="location">入手場所</label>
+
+                    <input
+                        type="text"
+                        id="location"
+                        name="location"
+                        placeholder="例：モーンの城"
+                        required
+                    >
+                </div>
+
+
+                <div class="form-group">
+                    <label for="memo">特徴メモ</label>
 
                     <textarea
                         id="memo"
                         name="memo"
-                        placeholder="例：第2形態では正面から攻撃を見た方が回避しやすい。"
+                        placeholder="例：強攻撃が刺突。筋力・技量補正。戦灰の付け替えが可能。"
                         rows="6"
                     ></textarea>
-                </div>
-
-
-                <div class="form-group">
-                    <label for="image">画像パス</label>
-
-                    <input
-                        type="text"
-                        id="image"
-                        name="image"
-                        placeholder="例：/static/images/fire_giant.jpg"
-                    >
-
-                    <p class="form-help">
-                        画像を使う場合は static/images フォルダに画像を置き、
-                        そのパスを入力します。
-                    </p>
                 </div>
 
 
