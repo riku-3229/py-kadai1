@@ -5,20 +5,20 @@
 ================================================== */
 
 :root {
-    --color-bg: #0b1220;
-    --color-bg-soft: #111a2b;
-    --color-surface: #151f31;
-    --color-surface-soft: #1a263a;
+    --color-bg: #151b26;
+    --color-bg-soft: #1b2330;
+    --color-surface: #202938;
+    --color-surface-soft: #273244;
 
-    --color-text: #e7edf5;
-    --color-text-soft: #9eabc0;
-    --color-muted: #708097;
+    --color-text: #f1f4f8;
+    --color-text-soft: #c1cad8;
+    --color-muted: #97a5b8;
 
-    --color-accent: #4f8cff;
-    --color-accent-soft: rgba(79, 140, 255, 0.14);
+    --color-accent: #6ea0ff;
+    --color-accent-soft: rgba(110, 160, 255, 0.18);
 
-    --color-border: #26344a;
-    --color-border-strong: #354864;
+    --color-border: #3a4658;
+    --color-border-strong: #53647c;
 
     --color-danger: #e36a78;
     --color-danger-soft: rgba(227, 106, 120, 0.10);
@@ -56,9 +56,9 @@ body {
     background:
         linear-gradient(
             180deg,
-            #0b1220 0%,
-            #0d1524 45%,
-            #0a111d 100%
+            #151b26 0%,
+            #19212d 45%,
+            #121821 100%
         );
 
     font-family:
@@ -120,7 +120,7 @@ h3 {
     z-index: 1000;
     top: 0;
 
-    background: rgba(11, 18, 32, 0.94);
+    background: rgba(21, 27, 38, 0.96);
     border-bottom: 1px solid var(--color-border);
 
     backdrop-filter: blur(12px);
@@ -177,7 +177,7 @@ h3 {
 
 .site-nav a:hover {
     color: var(--color-text);
-    background: #172238;
+    background: #2a3547;
 }
 
 .site-nav a[aria-current="page"] {
@@ -274,7 +274,7 @@ section + section {
     padding: 9px 16px;
 
     color: #eef4ff;
-    background: #253b5f;
+    background: #35547f;
 
     border: 1px solid #35527d;
     border-radius: var(--radius-sm);
@@ -293,18 +293,18 @@ section + section {
 .btn:hover {
     transform: translateY(-1px);
 
-    background: #2c4771;
+    background: #426796;
     border-color: #45699d;
 }
 
 .secondary-btn {
     color: #c3cede;
-    background: #182337;
+    background: #263142;
     border-color: var(--color-border);
 }
 
 .secondary-btn:hover {
-    background: #202d43;
+    background: #303d52;
     border-color: var(--color-border-strong);
 }
 
@@ -327,7 +327,7 @@ section + section {
     padding: 16px 20px;
 
     color: #dce6f4;
-    background: #121d2f;
+    background: #222c3b;
 
     font-weight: 800;
 
@@ -450,7 +450,7 @@ section + section {
     padding: 11px 13px;
 
     color: var(--color-text);
-    background: #0f1828;
+    background: #1a2230;
 
     border: 1px solid var(--color-border-strong);
     border-radius: var(--radius-sm);
@@ -473,7 +473,7 @@ section + section {
 
 .form-group input::placeholder,
 .form-group textarea::placeholder {
-    color: #66758b;
+    color: #8b98aa;
 }
 
 .form-group input:focus,
@@ -481,7 +481,7 @@ section + section {
 .form-group textarea:focus {
     outline: none;
 
-    background: #111c2e;
+    background: #202a39;
     border-color: #4f79b8;
 
     box-shadow:
@@ -512,7 +512,7 @@ section + section {
     padding: 15px 17px;
 
     color: var(--color-text-soft);
-    background: #101a2b;
+    background: #1f2836;
 
     border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
@@ -523,7 +523,7 @@ section + section {
 }
 
 .result-count {
-    color: #9eabc0;
+    color: #bcc6d4;
 
     font-size: 0.88rem;
     font-weight: 800;
@@ -539,7 +539,7 @@ section + section {
 
     overflow-x: auto;
 
-    background: #101927;
+    background: #1c2430;
     border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
 
@@ -557,24 +557,24 @@ section + section {
 
 .favorites-table th,
 .favorites-table td {
-    padding: 14px 15px;
+    padding: 12px 14px;
 
     text-align: left;
     vertical-align: top;
 
-    border-bottom: 1px solid #223047;
+    border-bottom: 1px solid #394659;
 }
 
 .favorites-table th {
-    color: #b6c2d3;
-    background: #111b2b;
+    color: #d3dbe7;
+    background: #303b4d;
 
     font-size: 0.82rem;
     font-weight: 800;
 }
 
 .favorites-table td {
-    color: #d6deea;
+    color: #eef2f7;
 }
 
 .favorites-table tbody tr {
@@ -582,7 +582,7 @@ section + section {
 }
 
 .favorites-table tbody tr:hover {
-    background: #162238;
+    background: #2a3648;
 }
 
 .favorites-table tbody tr:last-child td {
@@ -613,6 +613,41 @@ section + section {
     border-radius: var(--radius-sm);
 }
 
+
+
+/* 武器比較表の列幅 */
+.favorites-table th:nth-child(1),
+.favorites-table td:nth-child(1) {
+    min-width: 170px;
+}
+
+.favorites-table th:nth-child(2),
+.favorites-table td:nth-child(2) {
+    width: 110px;
+    white-space: nowrap;
+}
+
+.favorites-table th:nth-child(3),
+.favorites-table td:nth-child(3) {
+    width: 130px;
+    white-space: nowrap;
+}
+
+.favorites-table th:nth-child(4),
+.favorites-table td:nth-child(4) {
+    min-width: 180px;
+}
+
+.favorites-table th:nth-child(5),
+.favorites-table td:nth-child(5) {
+    min-width: 320px;
+}
+
+.favorites-table th:nth-child(6),
+.favorites-table td:nth-child(6) {
+    width: 80px;
+    white-space: nowrap;
+}
 
 /* ==================================================
    13. DELETE CONFIRMATION
@@ -689,8 +724,8 @@ section + section {
     margin-top: 28px;
     padding: 28px 20px;
 
-    color: #7f8da2;
-    background: #09101c;
+    color: #9aa7b7;
+    background: #111720;
 
     border-top: 1px solid var(--color-border);
 
